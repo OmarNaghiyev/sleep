@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Расписание сна</title>
+  <title>Omar's Sleep Schedule</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <div class="header">
     <div class="header-inner">
-      <span class="header-title">Расписание сна</span>
+      <span class="header-title">Omar's Sleep Schedule</span>
       <span class="header-sub">Erie, PA · 2026</span>
     </div>
     <div class="header-right">
@@ -21,7 +21,6 @@
       <div class="legend">
         <span class="badge badge-50">5-0</span>
         <span class="badge badge-41">4-1</span>
-        <span class="badge badge-32">3-2</span>
       </div>
     </div>
   </div>
@@ -30,7 +29,6 @@
     <button class="filter-btn active" data-filter="all">Все</button>
     <button class="filter-btn" data-filter="5-0">5-0</button>
     <button class="filter-btn" data-filter="4-1">4-1</button>
-    <button class="filter-btn" data-filter="3-2">3-2</button>
   </div>
 
   <div class="table-wrap">
@@ -38,12 +36,15 @@
       <thead>
         <tr>
           <th>Дата</th>
-          <th>Иша</th>
-          <th>Фаджр</th>
-          <th>Рассвет</th>
-          <th>Иша → Рассвет</th>
-          <th>Время сна</th>
-          <th>Схема</th>
+          <th>Fajr</th>
+          <th>Sunrise</th>
+          <th>Dhuhr</th>
+          <th>Asr</th>
+          <th>Maghrib</th>
+          <th>Isha</th>
+          <th>Isha → Sunrise</th>
+          <th>Sleep Time</th>
+          <th>Scheme</th>
         </tr>
       </thead>
       <tbody id="tableBody"></tbody>

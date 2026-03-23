@@ -81,7 +81,7 @@ function buildTable() {
   const today = todayKey();
   let lastMonth = null;
 
-  data.forEach(([month, day, isha, fajr, sunrise]) => {
+  data.forEach(([month, day, fajr, sunrise, dhuhr, asr, maghrib, isha]) => {
     if (month !== lastMonth) {
       const sep = document.createElement("tr");
       sep.classList.add("month-row");
@@ -123,9 +123,12 @@ function buildTable() {
 
     tr.innerHTML = `
       <td>${dateStr}${isToday ? ' <span style="color:var(--accent);font-size:0.65rem">◀</span>' : ""}</td>
-      <td>${isha}</td>
       <td>${fajr}</td>
       <td style="color:var(--muted)">${sunrise}</td>
+      <td>${dhuhr}</td>
+      <td>${asr}</td>
+      <td>${maghrib}</td>
+      <td>${isha}</td>
       <td class="interval ${intervalClass}">${formatInterval(mins)}</td>
       <td class="sleep-time">${sleepStr}</td>
       <td><span class="scheme-pill ${schemeClass}">${scheme}</span></td>
