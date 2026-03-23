@@ -70,7 +70,7 @@ function formatInterval(mins) {
 
 function todayKey() {
   const d = new Date();
-  return `${MONTH_NAMES[d.getMonth()]}-${d.getDate()}-2026`;
+  return `${MONTH_NAMES[d.getMonth()]}-${d.getDate()}-2027`;
 }
 
 function buildTable() {
@@ -87,7 +87,7 @@ function buildTable() {
       sep.classList.add("month-row");
       const td = document.createElement("td");
       td.colSpan = 10;
-      td.textContent = month + " 2026";
+      td.textContent = month + " 2027";
       sep.appendChild(td);
       sep.dataset.month = month;
       tbody.appendChild(sep);
@@ -96,7 +96,7 @@ function buildTable() {
 
     const mins = intervalMinutes(isha, sunrise);
     const scheme = cfg.getScheme(mins, month, day);
-    const rowKey = `${month}-${day}-2026`;
+    const rowKey = `${month}-${day}-2027`;
     const isToday = rowKey === today;
     const transition = cfg.transitions.find(t => t.month === month && t.day === day);
 
@@ -165,7 +165,7 @@ function setupCitySwitcher() {
       document.querySelectorAll(".city-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       currentCity = btn.dataset.city;
-      document.querySelector(".header-sub").textContent = CITY_CONFIG[currentCity].label + " · 2026";
+      document.querySelector(".header-sub").textContent = CITY_CONFIG[currentCity].label + " · 2027";
       document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
       document.querySelector('.filter-btn[data-filter="all"]').classList.add("active");
       buildTable();
