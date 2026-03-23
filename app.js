@@ -86,8 +86,8 @@ function buildTable() {
       const sep = document.createElement("tr");
       sep.classList.add("month-row");
       const td = document.createElement("td");
-      td.colSpan = 7;
-      td.textContent = MONTH_RU[month] + " 2026";
+      td.colSpan = 10;
+      td.textContent = month + " 2026";
       sep.appendChild(td);
       sep.dataset.month = month;
       tbody.appendChild(sep);
@@ -105,8 +105,8 @@ function buildTable() {
       tr.classList.add("transition-marker");
       tr.dataset.month = month;
       const td = document.createElement("td");
-      td.colSpan = 7;
-      td.innerHTML = `▸ Переход на схему <strong>${transition.to}</strong> — ${day} ${MONTH_RU[month]}`;
+      td.colSpan = 10;
+      td.innerHTML = `▸ Switch to scheme <strong>${transition.to}</strong> — ${day} ${month}`;
       tr.appendChild(td);
       tbody.appendChild(tr);
     }
@@ -116,7 +116,7 @@ function buildTable() {
     tr.dataset.month = month;
     if (isToday) tr.classList.add("today");
 
-    const dateStr = `${day.toString().padStart(2,"0")} ${MONTH_RU[month].substring(0,3)}`;
+    const dateStr = `${day.toString().padStart(2,"0")} ${month.substring(0,3)}`;
     const intervalClass = scheme === "5-0" ? "good" : "mid";
     const schemeClass = scheme === "5-0" ? "scheme-50" : "scheme-41";
     const sleepStr = cfg.getSleepStr(scheme);
