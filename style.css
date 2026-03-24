@@ -66,7 +66,7 @@ th { font-family: 'IBM Plex Mono', monospace; font-size: 0.63rem; font-weight: 5
 td { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; padding: 9px 16px; border-bottom: 1px solid var(--border); transition: background 0.1s; }
 tbody tr:hover td { background: rgba(255,255,255,0.02); }
 
-tr.month-row td { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); background: var(--surface); padding: 9px 16px; border-bottom: 1px solid var(--border-light); border-top: 1px solid var(--border-light); }
+tr.month-row td { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); background: var(--surface); padding: 9px 16px; border-bottom: 1px solid var(--border-light); border-top: 1px solid var(--border-light); position: sticky; top: 167px; z-index: 7; }
 
 tr.today td { background: rgba(200,184,255,0.05); }
 tr.today td:first-child { border-left: 2px solid var(--accent); }
