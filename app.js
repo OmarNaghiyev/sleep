@@ -179,7 +179,20 @@ function scrollToToday() {
   if (todayRow) setTimeout(() => todayRow.scrollIntoView({ behavior: "smooth", block: "center" }), 150);
 }
 
+function setupThemeToggle() {
+  const btn = document.getElementById("themeToggle");
+  const saved = localStorage.getItem("theme");
+  if (saved === "light") { document.documentElement.dataset.theme = "light"; btn.textContent = "☾"; }
+  btn.addEventListener("click", () => {
+    const isLight = document.documentElement.dataset.theme === "light";
+    document.documentElement.dataset.theme = isLight ? "dark" : "light";
+    btn.textContent = isLight ? "☀" : "☾";
+    localStorage.setItem("theme", isLight ? "dark" : "light");
+  });
+}
+
 buildTable();
 setupFilters();
 setupCitySwitcher();
+setupThemeToggle();
 scrollToToday();
