@@ -65,7 +65,7 @@ function intervalMinutes(ishaStr, sunriseStr) {
 }
 
 function formatInterval(mins) {
-  return `${Math.floor(mins/60)}ч ${(mins%60).toString().padStart(2,"0")}м`;
+  return `${Math.floor(mins/60)}h ${(mins%60).toString().padStart(2,"0")}m`;
 }
 
 function todayKey() {
