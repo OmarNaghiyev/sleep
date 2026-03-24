@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hadith</title>
+  <link rel="icon" type="image/png" href="sleeping_guy.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="hadith.css" />
+</head>
+<body class="hadith-page">
+
+  <header class="header">
+    <div class="header-inner">
+      <span class="header-title">Hadith</span>
+      <span class="header-sub">Sahih Al-Bukhari</span>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-link">Schedule</a>
+      <a href="quran.html" class="nav-link">Quran</a>
+      <a href="hadith.html" class="nav-link active">Hadith</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <button class="lang-btn" data-display="ar">AR</button>
+        <button class="lang-btn" data-display="en">EN</button>
+        <button class="lang-btn active" data-display="both">Both</button>
+      </div>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☀</button>
+    </div>
+  </header>
+
+  <div class="reader-layout">
+    <aside class="reader-sidebar" id="bookSidebar">
+      <div class="sidebar-loading">Loading books…</div>
+    </aside>
+    <main class="reader-content" id="hadithContent">
+      <div class="content-inner" id="contentInner">
+        <div class="content-placeholder">← Select a book</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="hadith.js"></script>
+</body>
+</html>

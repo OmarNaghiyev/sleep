@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quran</title>
+  <link rel="icon" type="image/png" href="sleeping_guy.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="quran.css" />
+</head>
+<body class="quran-page">
+
+  <header class="header quran-header">
+    <div class="header-inner">
+      <span class="header-title">Quran</span>
+      <span class="header-sub" id="headerSub">Original</span>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-link">Schedule</a>
+      <a href="quran.html" class="nav-link active">Quran</a>
+      <a href="hadith.html" class="nav-link">Hadith</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+      </div>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☀</button>
+    </div>
+  </header>
+
+  <div class="quran-layout">
+    <aside class="surah-sidebar" id="surahSidebar">
+      <div class="sidebar-loading">Loading surahs…</div>
+    </aside>
+    <main class="quran-content" id="quranContent">
+      <div class="content-inner" id="contentInner">
+        <div class="content-placeholder">← Select a surah</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="quran.js"></script>
+</body>
+</html>
