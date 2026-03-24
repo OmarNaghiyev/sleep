@@ -11,8 +11,8 @@ const CITY_CONFIG = {
   erie: {
     label: "Erie, PA",
     transitions: [
-      { month: "April",  day: 22, to: "4-1" },
-      { month: "August", day: 23, to: "5-0" },
+      { month: "April",  day: 21, to: "4-1" },
+      { month: "August", day: 22, to: "5-0" },
     ],
     getScheme(mins) {
       if (mins >= 540) return "5-0";
@@ -26,7 +26,7 @@ const CITY_CONFIG = {
   baku: {
     label: "Baku",
     transitions: [
-  { month: "April",  day: 19, to: "4-1" },
+  { month: "April",  day: 20, to: "4-1" },
   { month: "August", day: 24, to: "5-0" },
     ],
     getScheme(mins) {
