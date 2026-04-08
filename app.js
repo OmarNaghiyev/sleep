@@ -10,31 +10,22 @@ const MONTH_RU = {
 const CITY_CONFIG = {
   erie: {
     label: "Erie, PA",
-    transitions: [
-      { month: "April",  day: 21, to: "4-1" },
-      { month: "August", day: 22, to: "5-0" },
-    ],
-    getScheme(mins) {
-      if (mins >= 540) return "5-0";
-      return "4-1";
+    // Scheme based on Isha time: ≥ 21:00 → 4-1 (too late for 5-0), < 21:00 → 5-0
+    getScheme(isha) {
+      return toMinutes(isha) >= 21 * 60 ? "4-1" : "5-0";
     },
     getSleepStr(scheme) {
-      if (scheme === "5-0") return "22:00 – 06:00";
+      if (scheme === "5-0") return "21:30 – 05:30";
       return "23:00 – 05:30 | 05:50 – 07:30";
     },
   },
   baku: {
     label: "Baku",
-    transitions: [
-  { month: "April",  day: 20, to: "4-1" },
-  { month: "August", day: 24, to: "5-0" },
-    ],
-    getScheme(mins) {
-      if (mins >= 540) return "5-0";
-      return "4-1";
+    getScheme(isha) {
+      return toMinutes(isha) >= 21 * 60 ? "4-1" : "5-0";
     },
     getSleepStr(scheme) {
-      if (scheme === "5-0") return "22:00 – 05:45";
+      if (scheme === "5-0") return "21:30 – 05:30";
       return "22:20 – 04:50 | 05:10 – 06:50";
     },
   },
@@ -80,6 +71,7 @@ function buildTable() {
   tbody.innerHTML = "";
   const today = todayKey();
   let lastMonth = null;
+  let prevScheme = null;
 
   data.forEach(([month, day, fajr, sunrise, dhuhr, asr, maghrib, isha]) => {
     if (month !== lastMonth) {
@@ -95,21 +87,21 @@ function buildTable() {
     }
 
     const mins = intervalMinutes(isha, sunrise);
-    const scheme = cfg.getScheme(mins, month, day);
+    const scheme = cfg.getScheme(isha);
     const rowKey = `${month}-${day}-2027`;
     const isToday = rowKey === today;
-    const transition = cfg.transitions.find(t => t.month === month && t.day === day);
 
-    if (transition) {
+    if (prevScheme !== null && scheme !== prevScheme) {
       const tr = document.createElement("tr");
       tr.classList.add("transition-marker");
       tr.dataset.month = month;
       const td = document.createElement("td");
       td.colSpan = 10;
-      td.innerHTML = `▸ Switch to scheme <strong>${transition.to}</strong> — ${day} ${month}`;
+      td.innerHTML = `▸ Switch to <strong>${scheme}</strong> — ${day} ${month} (Isha ${isha})`;
       tr.appendChild(td);
       tbody.appendChild(tr);
     }
+    prevScheme = scheme;
 
     const tr = document.createElement("tr");
     tr.dataset.scheme = scheme;
