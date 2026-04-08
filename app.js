@@ -61,7 +61,7 @@ function formatInterval(mins) {
 
 function todayKey() {
   const d = new Date();
-  return `${MONTH_NAMES[d.getMonth()]}-${d.getDate()}-2027`;
+  return `${MONTH_NAMES[d.getMonth()]}-${d.getDate()}-${DATA_YEAR}`;
 }
 
 function buildTable() {
@@ -79,7 +79,7 @@ function buildTable() {
       sep.classList.add("month-row");
       const td = document.createElement("td");
       td.colSpan = 10;
-      td.textContent = month + " 2027";
+      td.textContent = month + " " + DATA_YEAR;
       sep.appendChild(td);
       sep.dataset.month = month;
       tbody.appendChild(sep);

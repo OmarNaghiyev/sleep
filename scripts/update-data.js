@@ -5,7 +5,9 @@
 const fs = require("fs");
 const path = require("path");
 
-const YEAR = new Date().getFullYear() + 1;
+// Manual: node scripts/update-data.js 2026
+// Cron (Dec 31): no arg → auto-fetches next year
+const YEAR = parseInt(process.argv[2]) || new Date().getFullYear() + 1;
 
 const CITIES = [
   {
@@ -106,6 +108,7 @@ async function main() {
     `// data.js — prayer times for Erie and Baku ${YEAR}\n` +
     `// Format: [month, day, fajr, sunrise, dhuhr, asr, maghrib, isha]\n` +
     `// Auto-generated on ${new Date().toISOString().split("T")[0]} by scripts/update-data.js\n\n` +
+    `const DATA_YEAR = ${YEAR};\n\n` +
     `const ERIE_DATA = [\n${formatRows(erieRows)}\n];\n\n` +
     `const BAKU_DATA = [\n${formatRows(bakuRows)}\n];\n`;
 
@@ -113,16 +116,7 @@ async function main() {
   fs.writeFileSync(outPath, output, "utf8");
   console.log(`\nWrote ${outPath}`);
 
-  // Also update the year references in app.js
-  const appPath = path.join(__dirname, "..", "app.js");
-  let appJs = fs.readFileSync(appPath, "utf8");
-  appJs = appJs.replace(/\b\d{4}\b/g, (match) => {
-    const y = parseInt(match);
-    if (y >= 2020 && y <= 2100) return String(YEAR);
-    return match;
-  });
-  fs.writeFileSync(appPath, appJs, "utf8");
-  console.log(`Updated year to ${YEAR} in app.js`);
+  console.log(`Year ${YEAR} written to data.js as DATA_YEAR`);
 }
 
 main().catch(err => {
